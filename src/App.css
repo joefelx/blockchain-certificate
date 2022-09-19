@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins";
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='35' height='35' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect width='100%25' height='100%25' fill='rgba(26, 32, 44,1)'/%3E%3Cpath d='M0 29.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5zM0 69.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5z' fill='rgba(4, 61, 195,1)'/%3E%3Cpath d='M20 29.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5z' fill='rgba(183, 121, 31,0)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ");
+    color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+    width: 100%;
+    height: 70px;
+    text-transform: uppercase;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(10px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.left-section {
+    display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.right-section {
+    /* width: 50%; */
+    /* background-color: red; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right-section span {
+    margin-left: 2rem;
+}
+
+/* UPLOAD PAGE */
+
+.verify {
+    min-height: 100vh;
+}
+
+.verify-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.verify-container .heading h1 {
+    text-transform: uppercase;
+}
+
+.verify-section {
+    width: 40rem;
+    height: 45px;
+    /* background-color: #000; */
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #043dc3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.verify-section input {
+    border: none;
+    flex: 3 1;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: transparent;
+    color: white;
+    backdrop-filter: blur(3px);
+}
+
+.verify-section input:focus {
+    outline: none;
+}
+
+.verify-section input::placeholder {
+    color: rgba(255, 255, 255, 0.773);
+    font-weight: 200;
+}
+
+.verify-section button {
+    cursor: pointer;
+    border: none;
+    flex: 1;
+    font-family: "Poppins";
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    background-color: #043dc3;
+    backdrop-filter: blur(3px);
+}
+
+
+.verify-section button:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+
+/* Upload */
+
+.upload {
+    min-height: calc(100vh - 70px);
+    height: auto;
+    margin-top: 70px;
+}
+
+.upload-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-heading {
+    /* margin-bottom: 2rem; */
+}
+
+.upload-heading h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-shadow: 0px 3px 15px black;
+}
+
+.upload-heading span {
+    color: #043dc3;
+}
+
+.upload-receipient {
+    /* background-color: rebeccapurple; */
+    text-align: center;
+    margin: 2rem 0;
+    border: 2px solid #043dc3;
+    border-radius: 25px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.upload-receipient-input {
+    width: 20rem;
+    height: 45px;
+    display: flex;
+    margin: 2rem 0;
+    border: 2px solid #043dc3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.upload-receipient-input input {
+    border: none;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: white;
+}
+
+.upload-receipient-input input:focus.upload-receipient-input {
+    border: 2px solid #043dc3;
+    outline: none;
+    /* backdrop-filter: blur(0); */
+}
+
+
+.upload-infos {
+    width: 100%;
+    display: none;
+}
+
+.upload-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.upload-button {
+    margin: 2rem;
+}
+
+.upload-button button {
+    width: 10rem;
+    height: 3rem;
+    color: white;
+    background-color: #043dc3;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-family: "Poppins";
+    font-size: 1rem;
+}
+
+/* Connect Wallet Page */
+
+.connectwallet {
+    height: calc(100vh - 70px);
 }
