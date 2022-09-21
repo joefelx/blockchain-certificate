@@ -1,78 +1,96 @@
+import { ethers } from "ethers";
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
+import Button from "../components/Button";
+import { CertificateContractAddress } from "../config.js";
+import CertificateAbi from "../contracts/CertificateContract.json";
+import Success from "../components/Success";
 
-function Upload() {
-  const [file, setFile] = useState(null);
-  const [certHash, setCertHash] = useState(null);
+function Upload({ user }) {
+  const [certHash, setCertHash] = useState("");
   const [studentWalletAddress, setStudentWalletAddress] = useState(null);
   const [studentName, setStudentName] = useState(null);
+  const [issuerName, setIssuerName] = useState(null);
+  const [stored, setStored] = useState(false);
 
-  function handleUpload() {
-    return alert("Uploaded");
-  }
+  function handleUpload(e) {
+    e.preventDefault();
+    const { ethereum } = window;
+    if (ethereum) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const CertificateContract = new ethers.Contract(
+        CertificateContractAddress,
+        CertificateAbi.abi,
+        signer
+      );
 
-  useEffect(() => {
-    if (file) {
-      // upload and return the hash
-      // setCertHash()
+      CertificateContract.addCertificate(
+        certHash,
+        user,
+        studentWalletAddress,
+        studentName,
+        issuerName
+      ).then((res) => {
+        console.log(res);
+        console.log("Stored");
+        alert("Stored");
+        setStored(true);
+      });
     }
-  }, [file]);
+  }
 
   return (
     <div className="upload">
-      <div className="upload-container">
-        <div className="upload-heading">
-          <h1>
-            Create paperless <span>digital certificate</span> with Blockchain
-          </h1>
+      <div className="upload-left-section">
+        <h1>upload the certificate on blockchain</h1>
+      </div>
+      <div className="upload-right-section">
+        <div className="upload-right-heading">
+          <h1>give the information</h1>
         </div>
-        <div className="upload-file">
+        <div className="upload-right-input">
+          <span>Student Name</span>
           <input
-            type="file"
-            name="certificate"
+            type="text"
+            placeholder="Type Here"
             onChange={(e) => {
-              setFile(e.target.files[0]);
+              setStudentName(e.target.value);
             }}
           />
         </div>
-        <div className="upload-receipient">
-          <h2>Student Name</h2>
-          <div className="upload-receipient-input">
-            <input
-              type="text"
-              onChange={(e) => {
-                setStudentName(e.target.value);
-              }}
-            />
-          </div>
-          <h2>Student Wallet Address</h2>
-          <div className="upload-receipient-input">
-            <input
-              type="text"
-              onChange={(e) => {
-                setStudentWalletAddress(e.target.value);
-              }}
-            />
-          </div>
+        <div className="upload-right-input">
+          <span>Student Wallet Address</span>
+          <input
+            type="text"
+            placeholder="Type Here"
+            onChange={(e) => {
+              setStudentWalletAddress(e.target.value);
+            }}
+          />
         </div>
-        <div className="upload-infos">
-          <div className="upload-info">
-            <div className="upload-info-left">
-              <h3>Issuer</h3>
-              <h3>Receipient</h3>
-              <h3>Certificate Hash</h3>
-            </div>
-            <div className="upload-info-right">
-              <h3>sdlfksl303ld09v93jrlfsdfsfsdfsdfsdfsj39j9j</h3>
-              <h3>sdlfksl303ld09v93dsfdsdfdfdfdfdfdddsfsfsfefadsjrlj39j9j</h3>
-              <h3>sdlfksl303ld09v93jrlj39j9j</h3>
-            </div>
-          </div>
+        <div className="upload-right-input">
+          <span>Student Certificate Hash</span>
+          <input
+            type="text"
+            placeholder="Type Here"
+            onChange={(e) => {
+              setCertHash(e.target.value);
+            }}
+          />
         </div>
-
-        <div className="upload-button">
-          <button onClick={handleUpload}>Upload</button>
+        <div className="upload-right-input">
+          <span>Issuer Name</span>
+          <input
+            type="text"
+            placeholder="Type Here"
+            onChange={(e) => {
+              setIssuerName(e.target.value);
+            }}
+          />
+        </div>
+        <div className="upload-right-button">
+          <Button text="upload" buttonAction={handleUpload} />
         </div>
       </div>
     </div>
