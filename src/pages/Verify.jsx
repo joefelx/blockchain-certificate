@@ -40,7 +40,10 @@ function Verify() {
   return (
     <div className="verify">
       <div className="verify-left-section">
-        <h1>Verify the certificate is Real or not?</h1>
+        <h1>
+          Verify the certificate is{" "}
+          <span className="highlight">Real or not?</span>
+        </h1>
       </div>
       <div className="verify-right-section">
         <div className="verify-right-heading">

@@ -43,7 +43,10 @@ function Upload({ user }) {
   return (
     <div className="upload">
       <div className="upload-left-section">
-        <h1>upload the certificate on blockchain</h1>
+        <h1>
+          upload the certificate on{" "}
+          <span className="highlight">blockchain</span>
+        </h1>
       </div>
       <div className="upload-right-section">
         <div className="upload-right-heading">
