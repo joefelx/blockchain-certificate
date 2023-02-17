@@ -5,7 +5,10 @@ function ConnectWallet({ connectwallet }) {
   return (
     <div className="connect-wallet">
       <div className="connect-wallet-left">
-        <h1>Access your certificate world wide by connecting to blockcert</h1>
+        <h1>
+          Access your <span className="highlight">certificate</span> world wide
+          by <span className="highlight">connecting</span> to blockcert
+        </h1>
       </div>
       <div className="connect-wallet-right">
         <span>Connect to your wallet</span>

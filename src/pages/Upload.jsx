@@ -4,7 +4,6 @@ import { useState } from "react";
 import Button from "../components/Button";
 import { CertificateContractAddress } from "../config.js";
 import CertificateAbi from "../contracts/CertificateContract.json";
-import Success from "../components/Success";
 
 function Upload({ user }) {
   const [certHash, setCertHash] = useState("");

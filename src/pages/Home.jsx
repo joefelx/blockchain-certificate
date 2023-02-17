@@ -1,5 +1,4 @@
 import "../App.css";
-import image from "../assets/Next steps-pana.png";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 
